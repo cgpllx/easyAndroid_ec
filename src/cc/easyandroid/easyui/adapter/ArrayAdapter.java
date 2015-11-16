@@ -42,7 +42,7 @@ public abstract class ArrayAdapter<T> extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public void addAll(T... items) {
+	public void addAll(@SuppressWarnings("unchecked") T... items) {
 		Collections.addAll(mItems, items);
 		notifyDataSetChanged();
 	}
@@ -52,7 +52,7 @@ public abstract class ArrayAdapter<T> extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public void addAll(int position, T... items) {
+	public void addAll(int position, @SuppressWarnings("unchecked") T... items) {
 		for (int i = position; i < (items.length + position); i++) {
 			mItems.add(i, items[i]);
 		}

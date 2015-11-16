@@ -18,6 +18,7 @@ public class WindowUtil {
 		windowManager.getDefaultDisplay().getMetrics(dm);
 		return dm;
 	}
+	
 	/**
 	 * 获取当前view的绝对坐标
 	 * @param view

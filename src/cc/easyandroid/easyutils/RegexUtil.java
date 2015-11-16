@@ -1,23 +1,9 @@
-/**   
- * @Title: RegexUtil.java 
- * @Package me.pc.mobile.helper.util 
- * @Description: TODO
- * @author SilentKnight || happychinapc[at]gmail[dot]com   
- * @date 2014 2014年12月4日 下午4:45:45 
- * @version V1.0.0   
- */
 package cc.easyandroid.easyutils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @ClassName: RegexUtil
- * @Description: TODO
- * @author SilentKnight || happychinapc@gmail.com
- * @date 2014年12月4日 下午4:45:45
- * 
- */
+ 
 public final class RegexUtil {
 	
 	private RegexUtil() {

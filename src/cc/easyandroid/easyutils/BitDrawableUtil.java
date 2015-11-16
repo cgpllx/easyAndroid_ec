@@ -12,13 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-/**
- * @ClassName: DrawableUtil
- * @Description: TODO
- * @author SilentKnight || happychinapc@gmail.com
- * @date 2014年11月28日 上午11:39:29
- * 
- */
+ 
 public final class BitDrawableUtil {
 	private BitDrawableUtil() {
 	}

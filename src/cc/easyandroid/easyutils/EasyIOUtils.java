@@ -22,7 +22,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KIOUtils {
+public class EasyIOUtils {
 	private static char[] SKIP_CHAR_BUFFER;
 	private static byte[] SKIP_BYTE_BUFFER;
 
