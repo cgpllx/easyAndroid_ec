@@ -1,6 +1,7 @@
 package cc.easyandroid.easyui.utils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
@@ -54,5 +55,10 @@ public class ViewUtility {
 			t.setOnItemClickListener(onItemClickListener);
 		}
 		return t;
+	}
+	// ------------------我是分割线----------------------dialog
+	@SuppressWarnings("unchecked")
+	public static <T extends View> T findViewById(Dialog dialog, int id) {
+		return (T) dialog.findViewById(id);
 	}
 }
