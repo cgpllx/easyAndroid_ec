@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class ViewUtility {
+public class EasyViewUtil {
 
 	@SuppressWarnings("unchecked")
 	public static <T extends View> T findViewById(View view, int id) {
