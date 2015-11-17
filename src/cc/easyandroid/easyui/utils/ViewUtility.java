@@ -27,7 +27,7 @@ public class ViewUtility {
 			t.setOnClickListener(onClickListener);
 		}
 		return t;
-	}
+	} 
 
 	@SuppressWarnings("unchecked")
 	public static <T extends View> T findViewById(Activity activity, int id, OnClickListener onClickListener) {
