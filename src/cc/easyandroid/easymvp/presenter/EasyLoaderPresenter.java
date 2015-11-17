@@ -22,3 +22,4 @@ public class EasyLoaderPresenter<T> extends KLoaderPresenterAbstract<ISimpleLoad
 	}
 
 }
+ 
