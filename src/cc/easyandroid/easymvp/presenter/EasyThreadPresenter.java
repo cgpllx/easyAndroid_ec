@@ -50,7 +50,7 @@ public class EasyThreadPresenter<T> extends KPresenter<ISimpleThreadView<T>, T> 
 		execute(null);
 	}
 
-	static final String THREAD_PREFIX = "EA-";
+	static final String THREAD_PREFIX = "EasyAndroid-";
 	static final String IDLE_THREAD_NAME = THREAD_PREFIX + "Idle";
 
 	static Executor ioExecutor() {
