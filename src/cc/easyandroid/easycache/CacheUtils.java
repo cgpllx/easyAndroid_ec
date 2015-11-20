@@ -103,6 +103,10 @@ public class CacheUtils {
 		} else {
 			cachePath = context.getCacheDir().getPath();
 		}
-		return new File(cachePath + File.separator + uniqueName);
+		File fileDir=new File(cachePath + File.separator + uniqueName);
+		if(!fileDir.exists()){
+			fileDir.mkdirs();
+		}
+		return fileDir;
 	}
 }

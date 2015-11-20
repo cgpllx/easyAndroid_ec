@@ -57,6 +57,9 @@ public class EAConfiguration {
 
 		public Builder setOkHttpClient(OkHttpClient okHttpClient) {
 			this.okHttpClient = okHttpClient;
+			if (okHttpClient.getCache() == null) {
+				okHttpClient.setCache(okHttpCache);// OkHttpClient缓存
+			}
 			return this;
 		}
 
@@ -66,7 +69,6 @@ public class EAConfiguration {
 			valleyCache.initialize();
 			cookieStore = new PersistentCookieStore(context.getApplicationContext());
 			okHttpCache = new Cache(CacheUtils.getDiskCacheDir(context.getApplicationContext(), "okhttpcache"), 10 * 1024 * 1024);
-			okHttpClient.setCache(new Cache(CacheUtils.getDiskCacheDir(context.getApplicationContext(), "okhttpcache"), 10 * 1024 * 1024));// OkHttpClient缓存
 		}
 
 		public EAConfiguration build() {
@@ -81,6 +83,7 @@ public class EAConfiguration {
 				okHttpClient.setCookieHandler(new CookieManager(cookieStore, CookiePolicy.ACCEPT_ORIGINAL_SERVER));
 				okHttpClient.setCache(okHttpCache);// OkHttpClient缓存
 			}
+
 			return new EAConfiguration(this);
 		}
 	}

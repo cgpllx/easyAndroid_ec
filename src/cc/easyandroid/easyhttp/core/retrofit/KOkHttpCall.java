@@ -29,6 +29,7 @@ import android.os.Process;
 import android.text.TextUtils;
 import cc.easyandroid.easycache.volleycache.Cache;
 import cc.easyandroid.easycache.volleycache.Cache.Entry;
+import cc.easyandroid.easyhttp.core.EAOkHttpCall;
 
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
@@ -36,10 +37,10 @@ import com.squareup.okhttp.Protocol;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.ResponseBody;
 
-public class KOkHttpCall<T> implements Call<T> {
-	private final OkHttpClient client;
+public abstract class KOkHttpCall<T> implements Call<T> {
+	protected final OkHttpClient client;
 	// private final RequestFactory requestFactory;
-	private final Converter<T> responseConverter;
+	protected final Converter<T> responseConverter;
 	// private final Object[] args;
 
 	private volatile com.squareup.okhttp.Call rawCall;
@@ -55,9 +56,7 @@ public class KOkHttpCall<T> implements Call<T> {
 
 	// We are a final type & this saves clearing state.
 	@Override
-	public KOkHttpCall<T> clone() {
-		return new KOkHttpCall<>(client, responseConverter);
-	}
+	public abstract KOkHttpCall<T> clone();
 
 	static final String THREAD_PREFIX = "Retrofit-";
 	static final String IDLE_THREAD_NAME = THREAD_PREFIX + "Idle";
@@ -265,9 +264,7 @@ public class KOkHttpCall<T> implements Call<T> {
 	// private com.squareup.okhttp.Call createRawCall() {
 	// return client.newCall(requestFactory.create(args));
 	// }
-	public Request createRequest() {
-		return null;
-	}
+	public abstract Request createRequest();
 
 	private String getCacheMode(Request request) {
 		return request.header("Cache-Mode");

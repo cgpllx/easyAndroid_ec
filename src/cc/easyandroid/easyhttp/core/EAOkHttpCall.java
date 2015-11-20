@@ -18,5 +18,9 @@ public class EAOkHttpCall<T> extends KOkHttpCall<T> {
 	public Request createRequest() {
 		return request;
 	}
-
+	// We are a final type & this saves clearing state.
+	@Override
+	public KOkHttpCall<T> clone() {
+		return new EAOkHttpCall<>(client, responseConverter,request);
+	}
 }
