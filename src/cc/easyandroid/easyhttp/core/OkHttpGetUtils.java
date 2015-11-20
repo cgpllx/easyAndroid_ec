@@ -11,7 +11,6 @@ public class OkHttpGetUtils extends OkHttpUtils {
 	public OkHttpGetUtils(OkHttpClient client) {
 		super(client);
 	}
-
 	/**
 	 * 同步的Get请求
 	 */

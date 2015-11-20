@@ -29,12 +29,12 @@ public class OkHttpPostUtils extends OkHttpUtils {
 
 	}
 
-	private Request buildPostRequest(String url, RequestBody body) {
+	public Request buildPostRequest(String url, RequestBody body) {
 		Request request = new Request.Builder().url(url).post(body).build();
 		return request;
 	}
 
-	private Request buildPostFormRequest(String url, Map<String, String> paras) {
+	public Request buildPostFormRequest(String url, Map<String, String> paras) {
 		FormEncodingBuilder builder = new FormEncodingBuilder();
 		if (paras != null && paras.size() > 0) {
 			for (String key : paras.keySet()) {
