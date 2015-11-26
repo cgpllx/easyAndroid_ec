@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Wrapper around SharedPreferences. See <a href="http://stackoverflow.com/questions/19610569/">here</a> for a discussion of some points.
  */
-public class SharedPrefUtil {
+public class EasySharedPrefUtil {
 
 	private static final List<Class<?>> CLASSES = new ArrayList<Class<?>>();
 	private static SharedPreferences prefs; // cache
@@ -31,7 +31,7 @@ public class SharedPrefUtil {
 		CLASSES.add(Set.class);
 	}
 
-	private SharedPrefUtil() {
+	private EasySharedPrefUtil() {
 	}
 
 	private static SharedPreferences getPrefs(Context ctx) {
@@ -39,7 +39,7 @@ public class SharedPrefUtil {
 		// the same instance of SharedPreferences will be returned AFAIC
 		SharedPreferences result = prefs;
 		if (result == null)
-			synchronized (SharedPrefUtil.class) {
+			synchronized (EasySharedPrefUtil.class) {
 				result = prefs;
 				if (result == null) {
 					result = prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
