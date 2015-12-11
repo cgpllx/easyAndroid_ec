@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import cc.easyandroid.easylog.KLog;
 
 public class ApkUtils {
 	public static void installApk(Context context, Uri uri) {
@@ -25,7 +24,7 @@ public class ApkUtils {
 	public static void installApk(Context context, String filepath) {
 		File apkfile = new File(filepath);
 		if (!apkfile.exists()) {
-			KLog.d("downloadapk", "apkfile is not exist, return!");
+			//KLog.d("downloadapk", "apkfile is not exist, return!");
 			return;
 		}
 		Intent i = new Intent(Intent.ACTION_VIEW);

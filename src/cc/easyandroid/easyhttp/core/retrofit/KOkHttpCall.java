@@ -76,8 +76,8 @@ public abstract class KOkHttpCall<T> implements Call<T> {
 		});
 	}
 
-	public static final Executor cacheExecutor = defaultHttpExecutor();
-	public static final Executor cacheCallbackExecutor = new MainThreadExecutor();
+	public static final Executor threadExecutor = defaultHttpExecutor();
+	public static final Executor mainCallbackExecutor = new MainThreadExecutor();
 
 	static class MainThreadExecutor implements Executor {
 		private final Handler handler = new Handler(Looper.getMainLooper());
@@ -165,17 +165,27 @@ public abstract class KOkHttpCall<T> implements Call<T> {
 		this.rawCall = rawCall;
 		callback.onstart();
 		rawCall.enqueue(new com.squareup.okhttp.Callback() {
-			private void callFailure(Throwable e) {
+			private void callFailure(final Throwable e) {
 				try {
-					callback.onFailure(e);
+					mainCallbackExecutor.execute(new Runnable() {
+						@Override
+						public void run() {
+							callback.onFailure(e);
+						}
+					});
 				} catch (Throwable t) {
 					t.printStackTrace();
 				}
 			}
 
-			private void callSuccess(Response<T> response) {
+			private void callSuccess(final Response<T> response) {
 				try {
-					callback.onResponse(response);
+					mainCallbackExecutor.execute(new Runnable() {
+						@Override
+						public void run() {
+							callback.onResponse(response);
+						}
+					});
 				} catch (Throwable t) {
 					t.printStackTrace();
 				}
@@ -199,7 +209,7 @@ public abstract class KOkHttpCall<T> implements Call<T> {
 					response = parseResponse(rawResponse, request);
 				} catch (Throwable e) {
 					if (loadnetElseCache) {
-						cacheExecutor.execute(new CallbackRunnable<T>(callback, cacheCallbackExecutor) {
+						threadExecutor.execute(new CallbackRunnable<T>(callback, mainCallbackExecutor) {
 							@Override
 							public Response<T> obtainResponse() {
 								return execCacheRequest(request);
