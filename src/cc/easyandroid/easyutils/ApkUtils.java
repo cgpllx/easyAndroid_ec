@@ -18,7 +18,7 @@ public class ApkUtils {
 		// intent.setType("application/vnd.android.package-archive");
 		// intent.setData(Uri.fromFile(file));
 		intent.setDataAndType(uri, "application/vnd.android.package-archive");
-		context.startActivity(intent);
+		context.startActivity(intent);  
 	}
 
 	public static void installApk(Context context, String filepath) {
