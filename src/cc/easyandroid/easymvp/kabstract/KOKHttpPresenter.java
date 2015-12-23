@@ -1,7 +1,6 @@
 package cc.easyandroid.easymvp.kabstract;
 
 import android.os.Bundle;
-
 import cc.easyandroid.easyhttp.core.retrofit.Call;
 import cc.easyandroid.easyhttp.core.retrofit.Callback;
 import cc.easyandroid.easyhttp.core.retrofit.Response;
