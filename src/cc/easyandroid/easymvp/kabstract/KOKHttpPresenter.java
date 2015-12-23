@@ -1,7 +1,7 @@
 package cc.easyandroid.easymvp.kabstract;
 
 import android.os.Bundle;
-
+import android.os.Looper;
 import cc.easyandroid.easyhttp.core.retrofit.Call;
 import cc.easyandroid.easyhttp.core.retrofit.Callback;
 import cc.easyandroid.easyhttp.core.retrofit.Response;
@@ -57,6 +57,11 @@ public abstract class KOKHttpPresenter<V extends ISimpleView<T>, T> extends KPre
 
 		@Override
 		public void onResponse(Response<T> response) {
+			if (Looper.myLooper() != Looper.getMainLooper()) {
+				System.out.println("kCallback-onResponse-子线程");
+			}else{
+				System.out.println("kCallback-onResponse-主线程");
+			}
 			T t = response.body();
 			if (t != null && t instanceof EAResult) {
 				EAResult kResult = (EAResult) t;
